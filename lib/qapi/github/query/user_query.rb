@@ -6,5 +6,10 @@ module Qapi::Github
       response = @connection.get("/user")
       User.new(@connection, JSON(response.body))
     end
+
+    def find(login)
+      response = @connection.get("/users/#{login}")
+      User.new(@connection, JSON(response.body))
+    end
   end
 end

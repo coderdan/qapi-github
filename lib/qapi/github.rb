@@ -1,3 +1,4 @@
+require 'qapi'
 require "qapi/github/version"
 require "qapi/github/model"
 require "qapi/github/query"
