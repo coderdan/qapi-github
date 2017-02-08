@@ -6,6 +6,16 @@ module Qapi
       def users
         Qapi::Github::UserQuery.new(self)
       end
+
+      def repos
+        Qapi::Github::RepoQuery.new(self)
+      end
+
+      # FIXME: This should really hang off repo but because we can't do lazy loading
+      # and don't have permission to load a repo with some scopes this won't work now
+      def repo_status
+        Qapi::Github::RepoStatusQuery.new(self)
+      end
     end
   end
 end
