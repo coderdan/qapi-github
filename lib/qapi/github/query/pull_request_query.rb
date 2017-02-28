@@ -30,8 +30,8 @@ module Qapi::Github
 
     # TODO: Must be a better way, use the curry method on 'method' perhaps?
     # This means we'd need to wrap this stuff
-    def all(slug = @curry_with[0])
-      response = @connection.get("/repos/#{slug}/pulls", per_page: 100)
+    def all(slug = @curry_with[0], options = {})
+      response = @connection.get("/repos/#{slug}/pulls", { per_page: 100 }.merge(options))
       PullRequest.parse(@connection, response.body)
     end
   end
